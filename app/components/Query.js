@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {Component}from 'react';
 import { connect } from 'react-redux';
 import { getGraph } from '../actions/actions';
 
-let Query = React.createClass({
+class Query extends Component {
   componentDidMount() {
     this.props.dispatch(
       getGraph("{goldberg(id: 2) {id, character, actor}}")
     );
-  },
+  }
+  
   render() {
     let dispatch = this.props.dispatch;
     let fetchInProgress = String(this.props.store.get('fetching'));
@@ -29,7 +30,7 @@ let Query = React.createClass({
       </div>
     )
   }
-});
+};
 
 const mapStateToProps = (state) => {
   return {
